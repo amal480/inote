@@ -1,11 +1,9 @@
-const connecttomongo=require('./db');
+const connecttomongo = require('./db');
 const express = require('express')
 connecttomongo();
 const app = express()
-const port = 3000
+const port = 5000
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cors());
 app.use(express.json())
 
 app.get('/', (req, res) => {
@@ -14,7 +12,7 @@ app.get('/', (req, res) => {
 
 
 //Available routes
-app.use('/api/auth',require('./routes/auth'))
+app.use('/api/auth', require('./routes/auth'))
 // app.use('/api/notes',require('./routes/notes'))
 
 
