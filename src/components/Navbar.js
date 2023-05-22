@@ -1,16 +1,16 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
 
 
 
 const Navbar = () => {
-    let location=useLocation();
+    let location = useLocation();
     useEffect(() => {
         // Google Analytics
         // ga('send', 'pageview');
         console.log(location);
-      }, [location]);
+    }, [location]);
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
@@ -21,13 +21,17 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname==="/"?"active":""}`} to="/">Home</Link>
+                            <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} to="/about">About</Link>
+                            <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
                         </li>
                     </ul>
                 </div>
+                    <div class="d-flex flex-row-reverse" role="search">
+                        <Link className={`mx-2 navbar-nav nav-link ${location.pathname === "/login" ? "active" : ""}`} to="/login">Login</Link>
+                        <Link className={`mx-2 navbar-nav nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup">Signup</Link>
+                    </div>
             </div>
         </nav>
     )
