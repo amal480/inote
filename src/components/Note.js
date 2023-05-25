@@ -2,13 +2,19 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from '../context/notes/noteContext';
 import Noteitem from './Noteitem';
 import Addnote from './Addnote';
+import { useNavigate } from 'react-router-dom';
 
-const Note = () => {
+const Note = (props) => {
     const context = useContext(noteContext);
     const { notes, getnote, editNote } = context;
+    let navigate = useNavigate()
     useEffect(() => {
-        getnote()
-        // eslint-disable-next-line
+        if (localStorage.getItem("token")) {
+            getnote()
+        }
+        else {
+            navigate("/login")
+        }
     }, [])
 
 
@@ -21,6 +27,7 @@ const Note = () => {
     const updatenote = (currentnote) => {
         ref.current.click()
         setnote({ eid: currentnote._id, etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag })
+        props.showalert("Note updated successfully", "success")
     }
 
 
@@ -64,10 +71,10 @@ const Note = () => {
                                 </div>
 
                                 {/* <button type="submit" className="btn btn-primary" onClick={handleChange}>Submit</button> */}
-                        <div className="modal-footer">
-                            <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button disabled={note.etitle.length<5||note.edescription.length<5} type="submit" className="btn btn-primary" /*onClick={handleChange} *Instead giving onSubmit() on form tag for validation as onClick wont work for form validations like minLength etc*/>Save changes</button>
-                        </div>
+                                <div className="modal-footer">
+                                    <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="submit" className="btn btn-primary" /*onClick={handleChange} *Instead giving onSubmit() on form tag for validation as onClick wont work for form validations like minLength etc*/>Save changes</button>
+                                </div>
                             </form>
                         </div>
                     </div>

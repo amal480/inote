@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom';
+import { Link, useNavigate,useLocation } from 'react-router-dom'
 
 
 
 const Navbar = () => {
+
+    let navigate=useNavigate()
+
+    const handleLogout=()=>{
+        localStorage.removeItem("token")
+        navigate("/login")
+    }
+    
+
     let location = useLocation();
     useEffect(() => {
-        // Google Analytics
-        // ga('send', 'pageview');
         console.log(location);
     }, [location]);
     return (
@@ -28,10 +34,12 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                    <div class="d-flex flex-row-reverse" role="search">
+                {!localStorage.getItem("token") ?
+                    <div className="d-flex flex-row-reverse" role="search">
                         <Link className={`mx-2 navbar-nav nav-link ${location.pathname === "/login" ? "active" : ""}`} to="/login">Login</Link>
                         <Link className={`mx-2 navbar-nav nav-link ${location.pathname === "/signup" ? "active" : ""}`} to="/signup">Signup</Link>
-                    </div>
+                    </div> :
+                    <button className="mx-2 navbar-nav nav-link" onClick={handleLogout}>Logout</button>}
             </div>
         </nav>
     )
