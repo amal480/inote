@@ -11,7 +11,7 @@ function Signup(props) {
     e.preventDefault()
     //API call
     const {name,email,password}=credentials
-    const response = await fetch(`${process.env.REACT_APP_SIGNUP}`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/signup`, {
       method: "POST",
 
       headers: {

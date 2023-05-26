@@ -12,7 +12,7 @@ const NoteState = (props) => {
     const getnote = async () => {
 
         //API call
-        const response = await fetch(`${process.env.REACT_APP_GETALLNOTES}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/notes/getnotes`, {
             method: "GET",
 
             headers: {
@@ -28,7 +28,7 @@ const NoteState = (props) => {
     const addNote = async (title, description, tag) => {
 
         //API call
-        const response = await fetch(`${process.env.REACT_APP_ADDNOTE}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/notes/addnote`, {
             method: "POST",
 
             headers: {
@@ -45,7 +45,7 @@ const NoteState = (props) => {
     const deleteNote = async (id) => {
 
         //API call
-        const response = await fetch(`${process.env.REACT_APP_DELETENOTE}${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/notes/delete/${id}`, {
             method: "DELETE",
 
             headers: {
@@ -65,7 +65,7 @@ const NoteState = (props) => {
     const editNote = async (id, title, description, tag) => {
 
         //API call
-        const response = await fetch(`${process.env.REACT_APP_UPDATENOTE}${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/notes/updatenote/${id}`, {
             method: "PUT",
 
             headers: {

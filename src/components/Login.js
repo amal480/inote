@@ -10,7 +10,7 @@ function Login(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         //API call
-        const response = await fetch(`${process.env.REACT_APP_LOGIN}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/login`, {
             method: "POST",
 
             headers: {
