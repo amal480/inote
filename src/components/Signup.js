@@ -11,7 +11,7 @@ function Signup(props) {
     e.preventDefault()
     //API call
     const {name,email,password}=credentials
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
+    const response = await fetch(`${process.env.REACT_APP_SIGNUP}`, {
       method: "POST",
 
       headers: {

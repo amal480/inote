@@ -4,7 +4,7 @@ import NoteContext from "./noteContext";
 // import fetchuser from "../../../backend/middleware/fetchuser";
 
 const NoteState = (props) => {
-    const host = "http://localhost:5000"
+    const host = process.env.REACT_APP_HOST
 
     const [notes, setNotes] = useState([])
 
@@ -12,7 +12,7 @@ const NoteState = (props) => {
     const getnote = async () => {
 
         //API call
-        const response = await fetch(`${host}/api/notes/getnotes`, {
+        const response = await fetch(`${process.env.REACT_APP_GETALLNOTES}`, {
             method: "GET",
 
             headers: {
@@ -28,7 +28,7 @@ const NoteState = (props) => {
     const addNote = async (title, description, tag) => {
 
         //API call
-        const response = await fetch(`${host}/api/notes/addnote`, {
+        const response = await fetch(`${process.env.REACT_APP_ADDNOTE}`, {
             method: "POST",
 
             headers: {
@@ -45,7 +45,7 @@ const NoteState = (props) => {
     const deleteNote = async (id) => {
 
         //API call
-        const response = await fetch(`${host}/api/notes/delete/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_DELETENOTE}${id}`, {
             method: "DELETE",
 
             headers: {
@@ -64,7 +64,7 @@ const NoteState = (props) => {
     const editNote = async (id, title, description, tag) => {
 
         //API call
-        const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_UPDATENOTE}${id}`, {
             method: "PUT",
 
             headers: {
