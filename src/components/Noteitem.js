@@ -5,7 +5,7 @@ const Noteitem = (props) => {
   const { note ,updatenote} = props
 
   const context = useContext(noteContext);
-  const { notes,deleteNote} = context;
+  const {deleteNote} = context;
 
   return (
     <div className='col-md-3 my-3'>

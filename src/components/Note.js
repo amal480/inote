@@ -15,6 +15,7 @@ const Note = (props) => {
         else {
             navigate("/login")
         }
+        // eslint-disable-next-line
     }, [])
 
 

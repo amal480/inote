@@ -4,7 +4,7 @@ import NoteContext from "./noteContext";
 // import fetchuser from "../../../backend/middleware/fetchuser";
 
 const NoteState = (props) => {
-    const host = process.env.REACT_APP_HOST
+    // const host = process.env.REACT_APP_HOST
 
     const [notes, setNotes] = useState([])
 
@@ -55,6 +55,7 @@ const NoteState = (props) => {
         });
 
         console.log("Deleteing node with id:" + id)
+        response.json()
         const newNote = notes.filter((note) => { return note._id !== id })
         setNotes(newNote)
 
@@ -74,6 +75,7 @@ const NoteState = (props) => {
             body: JSON.stringify({ title, description, tag }),
         });
 
+        response.json()
         //Logic for editing note
         let newNotes = JSON.parse(JSON.stringify(notes))
         for (let index = 0; index < newNotes.length; index++) {
