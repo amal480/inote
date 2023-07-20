@@ -1,10 +1,10 @@
 
 import { useState } from "react";
 import NoteContext from "./noteContext";
-// import fetchuser from "../../../backend/middleware/fetchuser";
+
 
 const NoteState = (props) => {
-    // const host = process.env.REACT_APP_HOST
+
 
     const [notes, setNotes] = useState([])
 
@@ -54,7 +54,7 @@ const NoteState = (props) => {
             },
         });
 
-        console.log("Deleteing node with id:" + id)
+        //console.log("Deleteing node with id:" + id)
         response.json()
         const newNote = notes.filter((note) => { return note._id !== id })
         setNotes(newNote)

@@ -11,7 +11,7 @@ function Signup(props) {
     e.preventDefault()
     //API call
     const {name,email,password}=credentials
-    const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/signup`, {
+    const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/createuser`, {
       method: "POST",
 
       headers: {
@@ -21,7 +21,7 @@ function Signup(props) {
 
     });
     const json = await response.json()
-    console.log(json)
+    // console.log(json)
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       navigate("/")

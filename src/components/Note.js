@@ -34,7 +34,7 @@ const Note = (props) => {
 
 
     const handleChange = (e) => {
-        console.log("Updating the note", note)
+        // console.log("Updating the note", note)
         editNote(note.eid, note.etitle, note.edescription, note.etag)
         refClose.current.click();
         e.preventDefault();
